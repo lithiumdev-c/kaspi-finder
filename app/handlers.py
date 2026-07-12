@@ -162,7 +162,7 @@ async def cmd_start(msg: Message, session: AsyncSession, command: CommandObject)
     user_id = msg.from_user.id
     username = msg.from_user.username
 
-    result = await session.execute(select(User).filter_by(user_id=user_id))
+    result = await session.execute(select(User).filter_by(id=user_id))
     current_user = result.scalar_one_or_none()
     if current_user:
         await msg.answer('🛒 Добро пожаловать в KaspiFinder - парсер магазина Kaspi\n'
